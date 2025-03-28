@@ -1,4 +1,3 @@
-# CommII_A1_G6
-This repository contains the laboratory work of the course **Communications II** (A1) of the group **6**, formed by the students **Daniel Morelos**, **Hailen Chacon** and **Laura Monsalve**, carried out during the first semester of 2025 at the **Universidad Industrial de Santander**. This course corresponds to the eighth semester, and the repository will be used to document and present the results of our practical activities.
+#PSD of Random Signals (GNU Radio)
 
-We truly hope our projects helps you with your future works.
+This repository contains the implementation of Practice 2. The practice involved analyzing the Power Spectral Density (PSD) of random bipolar binary signals, audio and image-based signals, and examining effects of interpolation, bit unpacking, and white noise using GNU Radio. Results included PSD plots and parameter analyses, highlighting the importance of sampling rate and bit rate selection in signal processing.
