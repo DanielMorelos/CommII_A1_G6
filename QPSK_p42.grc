@@ -28,7 +28,7 @@ options:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 8]
+    coordinate: [16, 12.0]
     rotation: 0
     state: enabled
 
@@ -121,14 +121,84 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: (0.77+0.77j,-0.77+0.77j, -0.77-0.77j,0.77-0.77j)
+    value: (0.9239+0.3827j, -0.3827+0.9239j, -0.9239-0.3827j, 0.3827-0.9239j)
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [1024, 40.0]
     rotation: 0
+    state: disabled
+- name: tabla_de_verdad_constelacion
+  id: variable
+  parameters:
+    comment: ''
+    value: (0.77+0.77j,-0.77+0.77j, -0.77-0.77j,0.77-0.77j)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1240, 36.0]
+    rotation: 0
     state: enabled
+- name: tabla_de_verdad_constelacion
+  id: variable
+  parameters:
+    comment: ''
+    value: (-0.77-0.77j,-0.77+0.77j, +0.77+0.77j,0.77-0.77j)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1264, 116.0]
+    rotation: 0
+    state: disabled
+- name: tabla_de_verdad_constelacion
+  id: variable
+  parameters:
+    comment: ''
+    value: (1+0j,0.5+0.866j,-0.5+0.866j,-1+0j,-0.5-0.866j,0.5-0.866j)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1288, 344.0]
+    rotation: 0
+    state: disabled
+- name: Menu
+  id: qtgui_tab_widget
+  parameters:
+    alias: ''
+    comment: ''
+    gui_hint: ''
+    label0: Time & Freq
+    label1: Freq
+    label10: Tab 10
+    label11: Tab 11
+    label12: Tab 12
+    label13: Tab 13
+    label14: Tab 14
+    label15: Tab 15
+    label16: Tab 16
+    label17: Tab 17
+    label18: Tab 18
+    label19: Tab 19
+    label2: Time
+    label3: Tab 3
+    label4: Tab 4
+    label5: Tab 5
+    label6: Tab 6
+    label7: Tab 7
+    label8: Tab 8
+    label9: Tab 9
+    num_tabs: '2'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1688, 372.0]
+    rotation: 0
+    state: true
 - name: analog_noise_source_x_0
   id: analog_noise_source_x
   parameters:
@@ -186,6 +256,40 @@ blocks:
     coordinate: [1160, 216.0]
     rotation: 0
     state: enabled
+- name: blocks_complex_to_mag_squared_0
+  id: blocks_complex_to_mag_squared
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1024'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1648, 600.0]
+    rotation: 0
+    state: true
+- name: blocks_multiply_const_vxx_1
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '[1/(1024*samp_rate)]*1024'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1024'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1904, 564.0]
+    rotation: 0
+    state: true
 - name: blocks_pack_k_bits_bb_0
   id: blocks_pack_k_bits_bb
   parameters:
@@ -221,6 +325,24 @@ blocks:
     coordinate: [332.0, 232]
     rotation: 90
     state: enabled
+- name: blocks_stream_to_vector_0
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: '1024'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1160, 424.0]
+    rotation: 0
+    state: true
 - name: digital_chunks_to_symbols_xx_0
   id: digital_chunks_to_symbols_xx
   parameters:
@@ -241,6 +363,54 @@ blocks:
     coordinate: [568, 200.0]
     rotation: 0
     state: enabled
+- name: epy_block_0_0
+  id: epy_block
+  parameters:
+    N: '1024'
+    _source_code: "import numpy as np\nfrom gnuradio import gr\n\n\nclass blk(gr.sync_block):\
+      \  \n    \"\"\"vector averager. N is the lengh of the vector\"\"\"\n\n    def\
+      \ __init__(self, N=1024):\n        gr.sync_block.__init__(\n            self,\n\
+      \            name='e_vec_averager_ff',   \n            in_sig=[(np.float32,N)],\n\
+      \            out_sig=[(np.float32,N)]\n        )\n        self.N = N\n     \
+      \   self.rows_counter=0\n        self.sum=0\n\n    def work(self, input_items,\
+      \ output_items):\n        x=input_items[0]\n        y=output_items[0]\n    \
+      \    self.sum += np.sum(x, axis=0)\n        self.rows_counter += len(x)\n  \
+      \      y[:]=self.sum/self.rows_counter\n        return len(output_items[0])\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: ('e_vec_averager_ff', 'blk', [('N', '1024')], [('0', 'float', 1024)],
+      [('0', 'float', 1024)], 'vector averager. N is the lengh of the vector', ['N'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1776, 760.0]
+    rotation: 0
+    state: true
+- name: fft_vxx_0
+  id: fft_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    fft_size: '1024'
+    forward: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nthreads: '1'
+    shift: 'True'
+    type: complex
+    window: '[1]*1024'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 448.0]
+    rotation: 0
+    state: true
 - name: import_0
   id: import
   parameters:
@@ -543,6 +713,80 @@ blocks:
     coordinate: [240, 516.0]
     rotation: 0
     state: enabled
+- name: qtgui_vector_sink_f_0
+  id: qtgui_vector_sink_f
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    average: '1.0'
+    color1: '"blue"'
+    color10: '"dark blue"'
+    color2: '"red"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    grid: 'False'
+    gui_hint: Menu@0:3,0,1,1
+    label1: p4
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '"PSD (Watts/Hz)"'
+    nconnections: '1'
+    ref_level: '0'
+    showports: 'False'
+    update_time: '0.10'
+    vlen: '1024'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    x_axis_label: '"f"'
+    x_start: -samp_rate/2
+    x_step: samp_rate/1024
+    x_units: '"Hz"'
+    y_axis_label: '"Sx(f)"'
+    y_units: '"Watss/Hz"'
+    ymax: 1/Rb
+    ymin: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [2144, 624.0]
+    rotation: 0
+    state: true
 - name: virtual_sink_0
   id: virtual_sink
   parameters:
@@ -599,10 +843,16 @@ blocks:
 connections:
 - [analog_noise_source_x_0, '0', blocks_add_xx_0, '0']
 - [analog_random_source_x_0, '0', blocks_pack_k_bits_bb_0, '0']
+- [blocks_add_xx_0, '0', blocks_stream_to_vector_0, '0']
 - [blocks_add_xx_0, '0', virtual_sink_0, '0']
+- [blocks_complex_to_mag_squared_0, '0', epy_block_0_0, '0']
+- [blocks_multiply_const_vxx_1, '0', qtgui_vector_sink_f_0, '0']
 - [blocks_pack_k_bits_bb_0, '0', blocks_packed_to_unpacked_xx_0, '0']
 - [blocks_packed_to_unpacked_xx_0, '0', digital_chunks_to_symbols_xx_0, '0']
+- [blocks_stream_to_vector_0, '0', fft_vxx_0, '0']
 - [digital_chunks_to_symbols_xx_0, '0', interp_fir_filter_xxx_0, '0']
+- [epy_block_0_0, '0', blocks_multiply_const_vxx_1, '0']
+- [fft_vxx_0, '0', blocks_complex_to_mag_squared_0, '0']
 - [interp_fir_filter_xxx_0, '0', blocks_add_xx_0, '1']
 - [interp_fir_filter_xxx_0, '0', virtual_sink_0_0, '0']
 - [virtual_source_0, '0', qtgui_const_sink_x_1, '0']
