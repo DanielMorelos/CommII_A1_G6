@@ -140,7 +140,7 @@ blocks:
     bus_structure: null
     coordinate: [1240, 36.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: tabla_de_verdad_constelacion
   id: variable
   parameters:
@@ -152,7 +152,7 @@ blocks:
     bus_structure: null
     coordinate: [1264, 116.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: Menu
   id: qtgui_tab_widget
   parameters:
@@ -331,6 +331,26 @@ blocks:
     coordinate: [1160, 424.0]
     rotation: 0
     state: true
+- name: blocks_vector_source_x_0
+  id: blocks_vector_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    repeat: 'True'
+    tags: '[]'
+    type: byte
+    vector: (0,1,2,3)
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [0, 396.0]
+    rotation: 0
+    state: disabled
 - name: digital_chunks_to_symbols_xx_0
   id: digital_chunks_to_symbols_xx
   parameters:
@@ -838,6 +858,7 @@ connections:
 - [blocks_pack_k_bits_bb_0, '0', blocks_packed_to_unpacked_xx_0, '0']
 - [blocks_packed_to_unpacked_xx_0, '0', digital_chunks_to_symbols_xx_0, '0']
 - [blocks_stream_to_vector_0, '0', fft_vxx_0, '0']
+- [blocks_vector_source_x_0, '0', digital_chunks_to_symbols_xx_0, '0']
 - [digital_chunks_to_symbols_xx_0, '0', interp_fir_filter_xxx_0, '0']
 - [epy_block_0_0, '0', blocks_multiply_const_vxx_1, '0']
 - [fft_vxx_0, '0', blocks_complex_to_mag_squared_0, '0']
