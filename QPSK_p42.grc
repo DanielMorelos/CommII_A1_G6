@@ -153,18 +153,6 @@ blocks:
     coordinate: [1264, 116.0]
     rotation: 0
     state: disabled
-- name: tabla_de_verdad_constelacion
-  id: variable
-  parameters:
-    comment: ''
-    value: (1+0j,0.5+0.866j,-0.5+0.866j,-1+0j,-0.5-0.866j,0.5-0.866j)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1288, 344.0]
-    rotation: 0
-    state: disabled
 - name: Menu
   id: qtgui_tab_widget
   parameters:

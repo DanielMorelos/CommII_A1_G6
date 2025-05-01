@@ -37,14 +37,14 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '[-0.77-0.77j,-1+0j,-0.77+0.77j,0+1j,0.77+0.77j,1+0j,0.77-0.77j,0-1j]'
+    value: (-0.77-0.77j,-1+0j,-0.77+0.77j,0+1j,0.77+0.77j,1+0j,0.77-0.77j,0-1j)
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [208, 112.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: Constelacion
   id: variable
   parameters:
@@ -69,17 +69,18 @@ blocks:
     bus_structure: null
     coordinate: [24, 580.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: Constelacion
   id: variable
   parameters:
     comment: ''
-    value: (1+0j,0.5+0.866j,-0.5+0.866j,-1+0j,-0.5-0.866j,0.5-0.866j)
+    value: "(0.3827+0.9239j, -0.3827+0.9239j, -0.9239+0.3827j, -0.9239-0.3827j,\n\
+      \ -0.3827-0.9239j, 0.3827-0.9239j, 0.9239-0.3827j, 0.9239+0.3827j)"
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [24, 660.0]
+    coordinate: [48, 436.0]
     rotation: 0
     state: disabled
 - name: M
@@ -92,6 +93,18 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [96, 104.0]
+    rotation: 0
+    state: enabled
+- name: N
+  id: variable
+  parameters:
+    comment: ''
+    value: '1024'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1880, 20.0]
     rotation: 0
     state: enabled
 - name: Nbps
@@ -350,7 +363,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    vlen: '1024'
+    vlen: N
   states:
     bus_sink: false
     bus_source: false
@@ -382,11 +395,11 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: '[1/(1024*samp_rate)]*1024'
+    const: '[1/(N*samp_rate)]*N'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
-    vlen: '1024'
+    vlen: N
   states:
     bus_sink: false
     bus_source: false
@@ -549,7 +562,7 @@ blocks:
 - name: epy_block_0_0
   id: epy_block
   parameters:
-    N: '1024'
+    N: N
     _source_code: "import numpy as np\nfrom gnuradio import gr\n\n\nclass blk(gr.sync_block):\
       \  \n    \"\"\"vector averager. N is the lengh of the vector\"\"\"\n\n    def\
       \ __init__(self, N=1024):\n        gr.sync_block.__init__(\n            self,\n\
@@ -579,7 +592,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    fft_size: '1024'
+    fft_size: N
     forward: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -1074,7 +1087,7 @@ blocks:
     bus_structure: null
     coordinate: [1592, 636.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: qtgui_freq_sink_x_1
   id: qtgui_freq_sink_x
   parameters:
@@ -1155,7 +1168,7 @@ blocks:
     bus_structure: null
     coordinate: [1544, 508.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: qtgui_time_sink_x_0
   id: qtgui_time_sink_x
   parameters:
@@ -1754,7 +1767,7 @@ blocks:
     alpha8: '1.0'
     alpha9: '1.0'
     autoscale: 'False'
-    average: '1.0'
+    average: '0.05'
     color1: '"blue"'
     color10: '"dark blue"'
     color2: '"red"'
@@ -1786,7 +1799,7 @@ blocks:
     ref_level: '0'
     showports: 'False'
     update_time: '0.10'
-    vlen: '1024'
+    vlen: N
     width1: '1'
     width10: '1'
     width2: '1'
@@ -1799,7 +1812,7 @@ blocks:
     width9: '1'
     x_axis_label: '"f"'
     x_start: -samp_rate/2
-    x_step: samp_rate/1024
+    x_step: samp_rate/N
     x_units: '"Hz"'
     y_axis_label: '"Sx(f)"'
     y_units: '"Watss/Hz"'
