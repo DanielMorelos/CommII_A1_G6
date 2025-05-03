@@ -1,4 +1,3 @@
-# CommII_A1_G6
-This repository contains the laboratory work of the course **Communications II** (A1) of the group **6**, formed by the students **Daniel Morelos**, **Hailen Chacon** and **Laura Monsalve**, carried out during the first semester of 2025 at the **Universidad Industrial de Santander**. This course corresponds to the eighth semester, and the repository will be used to document and present the results of our practical activities.
+#  M-PSK 
+In this practice, a digital communication system is implemented using M-Phase Shift Keying (M-PSK) modulation, which is a crucial technique in several communication applications, such as satellite data transmission, mobile telephony and fiber optic communications. GNU Radio is used for modulation implementation and signal analysis, including obtaining the complex envelope and constellation diagram analysis.
 
-We truly hope our projects helps you with your future works.
