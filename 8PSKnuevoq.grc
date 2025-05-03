@@ -44,7 +44,7 @@ blocks:
     bus_structure: null
     coordinate: [208, 112.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: Constelacion
   id: variable
   parameters:
@@ -69,7 +69,7 @@ blocks:
     bus_structure: null
     coordinate: [24, 580.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: Constelacion
   id: variable
   parameters:
@@ -285,7 +285,7 @@ blocks:
     bus_structure: null
     coordinate: [80, 184.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_add_xx_0
   id: blocks_add_xx
   parameters:
@@ -423,7 +423,7 @@ blocks:
     bus_structure: null
     coordinate: [1832, 200.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_repack_bits_bb_0
   id: blocks_repack_bits_bb
   parameters:
@@ -502,7 +502,7 @@ blocks:
     bus_structure: null
     coordinate: [32, 296.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: digital_chunks_to_symbols_xx_0
   id: digital_chunks_to_symbols_xx
   parameters:
@@ -993,9 +993,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1592, 636.0]
+    coordinate: [1448, 620.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_freq_sink_x_1
   id: qtgui_freq_sink_x
   parameters:
@@ -1076,7 +1076,7 @@ blocks:
     bus_structure: null
     coordinate: [1544, 508.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_time_sink_x_0
   id: qtgui_time_sink_x
   parameters:
@@ -1559,7 +1559,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1352, 600.0]
+    coordinate: [1208, 628.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_2_0_0

@@ -12,7 +12,6 @@ from PyQt5 import Qt
 from gnuradio import qtgui
 from gnuradio import analog
 from gnuradio import blocks
-import numpy
 from gnuradio import digital
 from gnuradio import fft
 from gnuradio.fft import window
@@ -66,7 +65,7 @@ class new_hier(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.Constelacion = Constelacion = (0.9239+0.3827j, 0.3827+0.9239j, -0.3827+0.9239j, -0.9239+0.3827j, -0.9239-0.3827j, -0.3827-0.9239j, 0.3827-0.9239j, 0.9239-0.3827j)
+        self.Constelacion = Constelacion = (-0.77-0.77j,-1+0j,-0.77+0.77j,0+1j,0.77+0.77j,1+0j,0.77-0.77j,0-1j)
         self.M = M = len(Constelacion)
         self.h = h = (1,1,1,1,1,1,1,1)
         self.Rb = Rb = 32000
@@ -186,90 +185,6 @@ class new_hier(gr.top_block, Qt.QWidget):
 
         self._qtgui_time_sink_x_2_0_win = sip.wrapinstance(self.qtgui_time_sink_x_2_0.qwidget(), Qt.QWidget)
         self.top_layout.addWidget(self._qtgui_time_sink_x_2_0_win)
-        self.qtgui_freq_sink_x_1 = qtgui.freq_sink_c(
-            1024, #size
-            window.WIN_BLACKMAN_hARRIS, #wintype
-            0, #fc
-            samp_rate, #bw
-            "", #name
-            1,
-            None # parent
-        )
-        self.qtgui_freq_sink_x_1.set_update_time(0.10)
-        self.qtgui_freq_sink_x_1.set_y_axis((-140), 10)
-        self.qtgui_freq_sink_x_1.set_y_label('Relative Gain', 'dB')
-        self.qtgui_freq_sink_x_1.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
-        self.qtgui_freq_sink_x_1.enable_autoscale(False)
-        self.qtgui_freq_sink_x_1.enable_grid(False)
-        self.qtgui_freq_sink_x_1.set_fft_average(1.0)
-        self.qtgui_freq_sink_x_1.enable_axis_labels(True)
-        self.qtgui_freq_sink_x_1.enable_control_panel(False)
-        self.qtgui_freq_sink_x_1.set_fft_window_normalized(False)
-
-
-
-        labels = ['', '', '', '', '',
-            '', '', '', '', '']
-        widths = [1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1]
-        colors = ["blue", "red", "green", "black", "cyan",
-            "magenta", "yellow", "dark red", "dark green", "dark blue"]
-        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
-            1.0, 1.0, 1.0, 1.0, 1.0]
-
-        for i in range(1):
-            if len(labels[i]) == 0:
-                self.qtgui_freq_sink_x_1.set_line_label(i, "Data {0}".format(i))
-            else:
-                self.qtgui_freq_sink_x_1.set_line_label(i, labels[i])
-            self.qtgui_freq_sink_x_1.set_line_width(i, widths[i])
-            self.qtgui_freq_sink_x_1.set_line_color(i, colors[i])
-            self.qtgui_freq_sink_x_1.set_line_alpha(i, alphas[i])
-
-        self._qtgui_freq_sink_x_1_win = sip.wrapinstance(self.qtgui_freq_sink_x_1.qwidget(), Qt.QWidget)
-        self.top_layout.addWidget(self._qtgui_freq_sink_x_1_win)
-        self.qtgui_freq_sink_x_0 = qtgui.freq_sink_c(
-            1024, #size
-            window.WIN_BLACKMAN_hARRIS, #wintype
-            0, #fc
-            samp_rate, #bw
-            "", #name
-            1,
-            None # parent
-        )
-        self.qtgui_freq_sink_x_0.set_update_time(0.10)
-        self.qtgui_freq_sink_x_0.set_y_axis((-140), 10)
-        self.qtgui_freq_sink_x_0.set_y_label('Relative Gain', 'dB')
-        self.qtgui_freq_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
-        self.qtgui_freq_sink_x_0.enable_autoscale(False)
-        self.qtgui_freq_sink_x_0.enable_grid(False)
-        self.qtgui_freq_sink_x_0.set_fft_average(0.05)
-        self.qtgui_freq_sink_x_0.enable_axis_labels(True)
-        self.qtgui_freq_sink_x_0.enable_control_panel(False)
-        self.qtgui_freq_sink_x_0.set_fft_window_normalized(False)
-
-
-
-        labels = ['', '', '', '', '',
-            '', '', '', '', '']
-        widths = [1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1]
-        colors = ["blue", "red", "green", "black", "cyan",
-            "magenta", "yellow", "dark red", "dark green", "dark blue"]
-        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
-            1.0, 1.0, 1.0, 1.0, 1.0]
-
-        for i in range(1):
-            if len(labels[i]) == 0:
-                self.qtgui_freq_sink_x_0.set_line_label(i, "Data {0}".format(i))
-            else:
-                self.qtgui_freq_sink_x_0.set_line_label(i, labels[i])
-            self.qtgui_freq_sink_x_0.set_line_width(i, widths[i])
-            self.qtgui_freq_sink_x_0.set_line_color(i, colors[i])
-            self.qtgui_freq_sink_x_0.set_line_alpha(i, alphas[i])
-
-        self._qtgui_freq_sink_x_0_win = sip.wrapinstance(self.qtgui_freq_sink_x_0.qwidget(), Qt.QWidget)
-        self.top_layout.addWidget(self._qtgui_freq_sink_x_0_win)
         self.qtgui_const_sink_x_0_0_0_0 = qtgui.const_sink_c(
             1024, #size
             "", #name
@@ -316,14 +231,13 @@ class new_hier(gr.top_block, Qt.QWidget):
         self.fft_vxx_0 = fft.fft_vcc(N, True, [1]*1024, True, 1)
         self.epy_block_0_0 = epy_block_0_0.blk(N=N)
         self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bc(Constelacion, 1)
+        self.blocks_vector_source_x_0 = blocks.vector_source_b((0,1,2,3,4,5,6,7), True, 1, [])
         self.blocks_throttle2_0 = blocks.throttle( gr.sizeof_gr_complex*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
         self.blocks_stream_to_vector_0 = blocks.stream_to_vector(gr.sizeof_gr_complex*1, 1024)
         self.blocks_repack_bits_bb_0 = blocks.repack_bits_bb(3, Nbps, "", False, gr.GR_LSB_FIRST)
-        self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_gr_complex*1)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff([1/(N*samp_rate)]*N)
         self.blocks_complex_to_mag_squared_0 = blocks.complex_to_mag_squared(N)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
-        self.analog_random_source_x_0 = blocks.vector_source_b(list(map(int, numpy.random.randint(0, 8, 1000))), True)
         self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, 0.01, 0)
 
 
@@ -331,21 +245,18 @@ class new_hier(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
-        self.connect((self.analog_random_source_x_0, 0), (self.blocks_repack_bits_bb_0, 0))
-        self.connect((self.blocks_add_xx_0, 0), (self.blocks_null_sink_0, 0))
         self.connect((self.blocks_add_xx_0, 0), (self.blocks_stream_to_vector_0, 0))
         self.connect((self.blocks_add_xx_0, 0), (self.qtgui_const_sink_x_0_0_0_0, 0))
-        self.connect((self.blocks_add_xx_0, 0), (self.qtgui_freq_sink_x_1, 0))
         self.connect((self.blocks_complex_to_mag_squared_0, 0), (self.epy_block_0_0, 0))
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.qtgui_vector_sink_f_0, 0))
         self.connect((self.blocks_repack_bits_bb_0, 0), (self.digital_chunks_to_symbols_xx_0, 0))
         self.connect((self.blocks_stream_to_vector_0, 0), (self.fft_vxx_0, 0))
         self.connect((self.blocks_throttle2_0, 0), (self.blocks_add_xx_0, 0))
+        self.connect((self.blocks_vector_source_x_0, 0), (self.blocks_repack_bits_bb_0, 0))
         self.connect((self.digital_chunks_to_symbols_xx_0, 0), (self.interp_fir_filter_xxx_0, 0))
         self.connect((self.epy_block_0_0, 0), (self.blocks_multiply_const_vxx_1, 0))
         self.connect((self.fft_vxx_0, 0), (self.blocks_complex_to_mag_squared_0, 0))
         self.connect((self.interp_fir_filter_xxx_0, 0), (self.blocks_throttle2_0, 0))
-        self.connect((self.interp_fir_filter_xxx_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.interp_fir_filter_xxx_0, 0), (self.qtgui_time_sink_x_2_0, 0))
 
 
@@ -417,8 +328,6 @@ class new_hier(gr.top_block, Qt.QWidget):
         self.samp_rate = samp_rate
         self.blocks_multiply_const_vxx_1.set_k([1/(self.N*self.samp_rate)]*self.N)
         self.blocks_throttle2_0.set_sample_rate(self.samp_rate)
-        self.qtgui_freq_sink_x_0.set_frequency_range(0, self.samp_rate)
-        self.qtgui_freq_sink_x_1.set_frequency_range(0, self.samp_rate)
         self.qtgui_time_sink_x_2_0.set_samp_rate(self.samp_rate)
         self.qtgui_vector_sink_f_0.set_x_axis((-self.samp_rate/2), (self.samp_rate/self.N))
 
