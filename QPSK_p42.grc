@@ -128,7 +128,7 @@ blocks:
     bus_structure: null
     coordinate: [1024, 40.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: tabla_de_verdad_constelacion
   id: variable
   parameters:
@@ -152,7 +152,7 @@ blocks:
     bus_structure: null
     coordinate: [1264, 116.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: Menu
   id: qtgui_tab_widget
   parameters:
@@ -623,7 +623,7 @@ blocks:
     bus_structure: null
     coordinate: [808, 520.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_time_sink_x_0
   id: qtgui_time_sink_x
   parameters:
@@ -846,7 +846,7 @@ blocks:
     bus_structure: null
     coordinate: [584, 544.0]
     rotation: 0
-    state: enabled
+    state: disabled
 
 connections:
 - [analog_noise_source_x_0, '0', blocks_add_xx_0, '0']

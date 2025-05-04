@@ -56,7 +56,7 @@ blocks:
     bus_structure: null
     coordinate: [400, 112.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: Constelacion
   id: variable
   parameters:
@@ -69,7 +69,7 @@ blocks:
     bus_structure: null
     coordinate: [24, 580.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: Constelacion
   id: variable
   parameters:
@@ -995,7 +995,7 @@ blocks:
     bus_structure: null
     coordinate: [1448, 620.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: qtgui_freq_sink_x_1
   id: qtgui_freq_sink_x
   parameters:
