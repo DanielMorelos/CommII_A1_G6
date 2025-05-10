@@ -65,7 +65,7 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.tabla_de_verdad_constelacion = tabla_de_verdad_constelacion = (-1,-0.77+0.77j,1j,0.77+0.77j,1,0.77-0.77j,-1j,-0.77-0.77j)
+        self.tabla_de_verdad_constelacion = tabla_de_verdad_constelacion = (-3-3j,-3-1j,-3+1j,-3+3j,-1-3j,-1-1j,-1+1j,-1+3j,1-3j,1-1j,1+1j,1+3j,3-3j,3-1j,3+1j,3+3j)
         self.M = M = len(tabla_de_verdad_constelacion )
         self.bps = bps = int(math.log(M,2))
         self.Sps = Sps = 8
