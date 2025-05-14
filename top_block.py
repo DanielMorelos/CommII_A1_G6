@@ -73,11 +73,11 @@ class top_block(gr.top_block, Qt.QWidget):
         self.Rs = Rs = 32000
         self.samp_rate = samp_rate = Rs*Sps
         self.M = M = len(constelacion )
-        self.bps = bps = int(math.log(M,2))
-        self.Fmax = Fmax = samp_rate/2
         self.ntaps = ntaps = 16*Sps
-        self.h = h = [1]*Sps
+        self.bps = bps = int(math.log(M,2))
         self.beta = beta = 1
+        self.Fmax = Fmax = samp_rate/2
+        self.h = h = wform.rrcos(Sps,ntaps,beta)
         self.Rb = Rb = Rs*bps
         self.Pn = Pn = 0
         self.Delay_eye = Delay_eye = (int(Sps/2)-1)
@@ -637,7 +637,7 @@ class top_block(gr.top_block, Qt.QWidget):
     def set_Sps(self, Sps):
         self.Sps = Sps
         self.set_Delay_eye((int(self.Sps/2)-1))
-        self.set_h([1]*self.Sps)
+        self.set_h(wform.rrcos(self.Sps,self.ntaps,self.beta))
         self.set_ntaps(16*self.Sps)
         self.set_samp_rate(self.Rs*self.Sps)
         self.qtgui_eye_sink_x_0.set_samp_per_symbol(self.Sps)
@@ -670,12 +670,26 @@ class top_block(gr.top_block, Qt.QWidget):
         self.M = M
         self.set_bps(int(math.log(self.M,2)))
 
+    def get_ntaps(self):
+        return self.ntaps
+
+    def set_ntaps(self, ntaps):
+        self.ntaps = ntaps
+        self.set_h(wform.rrcos(self.Sps,self.ntaps,self.beta))
+
     def get_bps(self):
         return self.bps
 
     def set_bps(self, bps):
         self.bps = bps
         self.set_Rb(self.Rs*self.bps)
+
+    def get_beta(self):
+        return self.beta
+
+    def set_beta(self, beta):
+        self.beta = beta
+        self.set_h(wform.rrcos(self.Sps,self.ntaps,self.beta))
 
     def get_Fmax(self):
         return self.Fmax
@@ -684,24 +698,12 @@ class top_block(gr.top_block, Qt.QWidget):
         self.Fmax = Fmax
         self.set_BW_filtro(self.Fmax)
 
-    def get_ntaps(self):
-        return self.ntaps
-
-    def set_ntaps(self, ntaps):
-        self.ntaps = ntaps
-
     def get_h(self):
         return self.h
 
     def set_h(self, h):
         self.h = h
         self.interp_fir_filter_xxx_0.set_taps(self.h)
-
-    def get_beta(self):
-        return self.beta
-
-    def set_beta(self, beta):
-        self.beta = beta
 
     def get_Rb(self):
         return self.Rb

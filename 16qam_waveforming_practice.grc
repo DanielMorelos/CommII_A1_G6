@@ -224,7 +224,7 @@ blocks:
     bus_structure: null
     coordinate: [1232, 116.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: h
   id: variable
   parameters:
@@ -248,7 +248,7 @@ blocks:
     bus_structure: null
     coordinate: [1528, 52.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: ntaps
   id: variable
   parameters:
@@ -1367,7 +1367,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [748.0, 352]
+    coordinate: [752.0, 344]
     rotation: 270
     state: true
 - name: virtual_source_0
