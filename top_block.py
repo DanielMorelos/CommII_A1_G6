@@ -70,7 +70,7 @@ class top_block(gr.top_block, Qt.QWidget):
         ##################################################
         self.constelacion = constelacion = [-3-3j, -3-1j, -3+1j, -3+3j,-1-3j, -1-1j, -1+1j, -1+3j,  1-3j,  1-1j,  1+1j,  1+3j,  3-3j,  3-1j,  3+1j,  3+3j]
         self.Sps = Sps = 16
-        self.Rs = Rs = 32000
+        self.Rs = Rs = 8000*6
         self.samp_rate = samp_rate = Rs*Sps
         self.M = M = len(constelacion )
         self.ntaps = ntaps = 16*Sps
