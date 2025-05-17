@@ -198,7 +198,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [272, 4.0]
+    coordinate: [256, 4.0]
+    rotation: 0
+    state: disabled
+- name: constelacion
+  id: variable
+  parameters:
+    comment: ''
+    value: '[-3-3j, -3-1j, -3+1j, -3+3j,-1-3j, -1-1j, -1+1j, -1+3j,  1-3j,  1-1j,  1+1j,  1+3j,  3-3j,  3-1j,  3+1j,  3+3j]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [304, 260.0]
     rotation: 0
     state: enabled
 - name: h
@@ -222,7 +234,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1320, 116.0]
+    coordinate: [1336, 60.0]
     rotation: 0
     state: disabled
 - name: h
@@ -234,7 +246,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1464, 116.0]
+    coordinate: [1528, 52.0]
     rotation: 0
     state: disabled
 - name: ntaps
@@ -277,7 +289,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [808, 268.0]
+    coordinate: [808, 276.0]
     rotation: 0
     state: true
 - name: analog_random_source_x_0
@@ -344,6 +356,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     num_ports: '1'
+    showports: 'False'
     type: complex
     vlen: '1'
   states:
@@ -526,7 +539,7 @@ blocks:
     color8: '"red"'
     color9: '"red"'
     comment: ''
-    grid: 'False'
+    grid: 'True'
     gui_hint: menu@3:0,0,1,1
     label1: p1 (Vista discreta)
     label10: ''
@@ -579,10 +592,10 @@ blocks:
     width7: '1'
     width8: '1'
     width9: '1'
-    xmax: '1.5'
-    xmin: '-1.5'
-    ymax: '1.5'
-    ymin: '-1.5'
+    xmax: '3.5'
+    xmin: '-3.5'
+    ymax: '3.5'
+    ymin: '-3.5'
   states:
     bus_sink: false
     bus_source: false
@@ -618,7 +631,7 @@ blocks:
     color8: '"red"'
     color9: '"red"'
     comment: ''
-    grid: 'False'
+    grid: 'True'
     gui_hint: menu@3:0,1,1,1
     label1: p1 (Vista continua)
     label10: ''
@@ -671,10 +684,10 @@ blocks:
     width7: '1'
     width8: '1'
     width9: '1'
-    xmax: '1.5'
-    xmin: '-1.5'
-    ymax: '1.5'
-    ymin: '-1.5'
+    xmax: '3.5'
+    xmin: '-3.5'
+    ymax: '3.5'
+    ymin: '-3.5'
   states:
     bus_sink: false
     bus_source: false
@@ -710,7 +723,7 @@ blocks:
     color8: '"red"'
     color9: '"red"'
     comment: ''
-    grid: 'False'
+    grid: 'True'
     gui_hint: menu@3:1,0,1,1
     label1: p2 (Ruido)
     label10: ''
@@ -802,7 +815,7 @@ blocks:
     color8: '"red"'
     color9: '"red"'
     comment: ''
-    grid: 'False'
+    grid: 'True'
     gui_hint: menu@3:1,1,1,1
     label1: p3 (Original)
     label10: ''
@@ -855,10 +868,10 @@ blocks:
     width7: '1'
     width8: '1'
     width9: '1'
-    xmax: '1.5'
-    xmin: '-1.5'
-    ymax: '1.5'
-    ymin: '-1.5'
+    xmax: '3.5'
+    xmin: '-3.5'
+    ymax: '3.5'
+    ymin: '-3.5'
   states:
     bus_sink: false
     bus_source: false
@@ -896,7 +909,7 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     entags: 'True'
-    grid: 'False'
+    grid: 'True'
     gui_hint: menu@2:1,0,1,1
     label1: p1 (Re)
     label10: Signal 10
@@ -952,8 +965,8 @@ blocks:
     width8: '1'
     width9: '1'
     ylabel: Amplitude
-    ymax: '1.4'
-    ymin: '-1.4'
+    ymax: '3.4'
+    ymin: '-3.4'
     yunit: '""'
   states:
     bus_sink: false
@@ -996,7 +1009,7 @@ blocks:
     fc: '0'
     fftsize: '1024'
     freqhalf: 'True'
-    grid: 'False'
+    grid: 'True'
     gui_hint: menu@1:0,0,1,1
     label: Relative Gain
     label1: p1
@@ -1077,7 +1090,7 @@ blocks:
     fc: '0'
     fftsize: '1024'
     freqhalf: 'True'
-    grid: 'False'
+    grid: 'True'
     gui_hint: menu@1:1,0,1,1
     label: Relative Gain
     label1: Ruido
@@ -1154,7 +1167,7 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     entags: 'True'
-    grid: 'False'
+    grid: 'True'
     gui_hint: menu@0:1,0,1,1
     label1: p1 (Re)
     label10: Signal 10
@@ -1211,8 +1224,8 @@ blocks:
     width8: '1'
     width9: '1'
     ylabel: Amplitude
-    ymax: '1.5'
-    ymin: '-1.5'
+    ymax: '3.5'
+    ymin: '-3.5'
     yunit: '""'
   states:
     bus_sink: false
@@ -1251,7 +1264,7 @@ blocks:
     comment: ''
     ctrlpanel: 'False'
     entags: 'True'
-    grid: 'False'
+    grid: 'True'
     gui_hint: menu@0:2,0,1,1
     label1: p1 (Im)
     label10: Signal 10
@@ -1308,8 +1321,8 @@ blocks:
     width8: '1'
     width9: '1'
     ylabel: Amplitude
-    ymax: '1.5'
-    ymin: '-1.5'
+    ymax: '3.5'
+    ymin: '-3.5'
     yunit: '""'
   states:
     bus_sink: false
@@ -1473,3 +1486,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.10.0
